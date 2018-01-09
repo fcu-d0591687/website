@@ -1,51 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-body {
-    background-color: lightblue;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-</style>
-</head>
 <body>
 
-<center><img src="123.jpg" alt="Workplace" usemap="#workmap" width="932" height="1485"></center>
+<h1>My First Google Map</h1>
 
-<map name="workmap">
-  <area shape="poly" coords="369,1056 432,1059 457,1096 418,1131 387,1181 411,1242 413,1283 455,1325 442,1464 397,1441 384,1453 376,1404 381,1376 331,1266 271,1219 292,1068 320,1079 360,1049" alt="Pingtung" href="#">
-  
-	<div class="tooltip"><area shape="poly" coords="630,497 509,518 459,554 355,598 367,660 404,741 450,801 519,813 582,684 633,506" alt="Nantou" >123
-		<a class="tooltiptext" href="https://www.google.com.tw/imghp?hl=zh-TW">Tooltip text</a>
-	</div>
+<center><div id="map" style="width:700px;height:800px;background:yellow"></div></center>
 
-  <area shape="poly" coords="494,201 563,237 616,292 652,340 611,404 529,371 463,278" alt="Hsinchu" href="#">
-  <area shape="poly" coords="264,1218 201,1150 178,1036 224,1048 272,1041 290,1001 355,933 358,884 463,808 498,815 508,833 513,867 464,899 450,937 429,1015 448,1058 408,1064 369,1059 325,1073" alt="Kaohsiung" href="#">
-</map>
+<script>
+var map;
+      function initMap(){
+        map = new google.maps.Map(document.getElementById('map'),{
+          zoom: 8,
+          center: new google.maps.LatLng(23.844858, 120.935611),
+          mapTypeId: 'roadmap'
+        });
+		
+        var icons = {
+          postOffice: {
+            icon: 'post.png'
+          }
+        };
+        
+        var points = [
+          {
+           position: new google.maps.LatLng(23.918568, 121.182967),
+            type: 'postOffice',message:'<a href="#">親愛愛樂</a>'
+          },{
+           position: new google.maps.LatLng(23.795925, 120.857104),
+            type: 'postOffice',message:'<a href="#">民中濁岸合唱團</a>'
+          },{
+           position: new google.maps.LatLng(24.629882, 121.119475),
+            type: 'postOffice',message:'<a href="#">桃山國小合唱團</a>'
+          },{
+           position: new google.maps.LatLng(22.993895, 120.635422),
+            type: 'postOffice',message:'<a href="#">六龜高中合唱團</a>'
+          },{
+           position: new google.maps.LatLng(22.690076, 120.637974),
+            type: 'postOffice',message:'<a href="#">希望兒童合唱團</a>'
+          },{
+           position: new google.maps.LatLng(23.121091, 121.216259),
+            type: 'postOffice',message:'<a href="#">池上弦樂團</a>'
+          }
+			
+           
+        ];
+        
+		
+        points.forEach(function (feature){
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+		  
+		  var infowindow = new google.maps.InfoWindow({
+			content: feature.message
+		  });
+		  
+		  google.maps.event.addListener(marker, 'mouseover', function() {
+			infowindow.open(map,marker)
+		  });
+		  google.maps.event.addListener(map, 'mousemove', function() {
+			if (infowindow){ infowindow.close(); }
+		  });
+        });
+		
+      }
+</script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeTIt8tYw24OL69bOaSxuizKZoqlfz7lM&callback=initMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
 
 </body>
 </html>

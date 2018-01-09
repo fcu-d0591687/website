@@ -16,7 +16,7 @@ var map;
         });
 		
         var icons = {
-          postOffice: {
+          music: {
             icon: 'post.png'
           }
         };
@@ -24,22 +24,28 @@ var map;
         var points = [
           {
            position: new google.maps.LatLng(23.918568, 121.182967),
-            type: 'postOffice',message:'<a href="#">親愛愛樂</a>'
+            type: 'music',
+			message:'<img src="gas.png"><br><a href="#">親愛愛樂</a>',
           },{
            position: new google.maps.LatLng(23.795925, 120.857104),
-            type: 'postOffice',message:'<a href="#">民中濁岸合唱團</a>'
+            type: 'music',
+			message:'<img src="gas.png"><br><a href="#">民中濁岸合唱團</a>'
           },{
            position: new google.maps.LatLng(24.629882, 121.119475),
-            type: 'postOffice',message:'<a href="#">桃山國小合唱團</a>'
+            type: 'music',
+			message:'<img src="gas.png"><br><a href="#">桃山國小合唱團</a>'
           },{
            position: new google.maps.LatLng(22.993895, 120.635422),
-            type: 'postOffice',message:'<a href="#">六龜高中合唱團</a>'
+            type: 'music',
+			message:'<img src="gas.png"><br><a href="#">六龜高中合唱團</a>'
           },{
            position: new google.maps.LatLng(22.690076, 120.637974),
-            type: 'postOffice',message:'<a href="#">希望兒童合唱團</a>'
+            type: 'music',
+			message:'<img src="gas.png"><br><a href="#">希望兒童合唱團</a>'
           },{
            position: new google.maps.LatLng(23.121091, 121.216259),
-            type: 'postOffice',message:'<a href="#">池上弦樂團</a>'
+            type: 'music',
+			message:'<img src="gas.png"><br><a href="#">池上弦樂團</a>'
           }
 			
            
@@ -57,6 +63,8 @@ var map;
 			content: feature.message
 		  });
 		  
+	
+		  
 		  google.maps.event.addListener(marker, 'mouseover', function() {
 			infowindow.open(map,marker)
 		  });
@@ -69,10 +77,7 @@ var map;
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeTIt8tYw24OL69bOaSxuizKZoqlfz7lM&callback=initMap"></script>
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
+
 
 </body>
 </html>
